@@ -1,0 +1,9 @@
+<article class="targeta">
+  <h2>{{ entrenament.nom }}</h2>
+
+  <app-categoria [categoria]="entrenament.categoria"> </app-categoria>
+
+  <p>Durada: {{ entrenament.duradaMinuts }} minuts</p>
+
+  <button type="button" (click)="seleccionar()">Veure detalls</button>
+</article>

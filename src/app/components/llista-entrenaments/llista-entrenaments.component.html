@@ -1,0 +1,12 @@
+<section class="llista">
+  @for (entrenament of entrenaments; track entrenament.id) {
+
+    <app-targeta-entrenament
+      [entrenament]="entrenament"
+      (seleccionat)="seleccionar($event)">
+    </app-targeta-entrenament>
+
+  } @empty {
+    <p>No hi ha entrenaments per mostrar.</p>
+  }
+</section>

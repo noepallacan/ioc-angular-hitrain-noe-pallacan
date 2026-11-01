@@ -22,7 +22,7 @@ export const ENTRENAMENTS_MOCK: Entrenament[] = [
   {
     id: 3,
     nom: 'Entrenament funcional',
-    descripcio: 'Circuit de força i HIIT.',
+    descripcio: 'Circuit de força i HIIT a la AirBike.',
     categoria: 'Hibrid',
     data: '2026-10-27',
     duradaMinuts: 75,
@@ -31,7 +31,7 @@ export const ENTRENAMENTS_MOCK: Entrenament[] = [
   {
     id: 4,
     nom: 'Escola de combat',
-    descripcio: 'Treball de tècnica i escola de combat en parelles',
+    descripcio: 'Treball de tècnica i escola de combat en parelles.',
     categoria: 'Boxa',
     data: '2026-10-28',
     duradaMinuts: 60,
@@ -39,7 +39,7 @@ export const ENTRENAMENTS_MOCK: Entrenament[] = [
   },
   {
     id: 5,
-    nom: 'Entrenament força (Push)',
+    nom: 'Entrenament de força (Push)',
     descripcio:
       'Entrenament de força focalitzat en la part superior del cos, especialment el pit, espatlles i tríceps.',
     categoria: 'Força',
@@ -59,7 +59,7 @@ export const ENTRENAMENTS_MOCK: Entrenament[] = [
   {
     id: 7,
     nom: 'Tecnica de boxa avançada',
-    descripcio: 'Combinacions ofensives, contraatacs i treball de precisió amb el coach',
+    descripcio: 'Combinacions ofensives, contraatacs i treball de precisió amb el coach.',
     categoria: 'Boxa',
     data: '2026-11-2',
     duradaMinuts: 60,
@@ -92,5 +92,5 @@ export const ENTRENAMENTS_MOCK: Entrenament[] = [
     data: '2026-10-19',
     duradaMinuts: 80,
     destacat: false,
-  }
+  },
 ];

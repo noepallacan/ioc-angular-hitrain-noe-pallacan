@@ -1,12 +1,8 @@
 <main class="app-shell">
-
   <section class="intro">
     <h1>{{ nomApp }}</h1>
 
-    <p>
-      Noé Pallacan — Aplicació per registrar i consultar l'històric
-      d'entrenaments.
-    </p>
+    <p>Noé Pallacan — Aplicació per registrar i consultar l'històric d'entrenaments.</p>
   </section>
 
   <section class="project-card">
@@ -17,12 +13,29 @@
     <p>Estat: Projecte base llest</p>
   </section>
 
-  <aside class="note">
-    Nota: aquest projecte s'ampliarà durant el mòdul.
-  </aside>
+  <app-filtres-entrenaments></app-filtres-entrenaments>
+
+  <h2>Els meus entrenaments</h2>
+
+  <app-llista-entrenaments
+    [entrenaments]="entrenaments"
+    (entrenamentSeleccionat)="mostrarDetall($event)"
+  >
+  </app-llista-entrenaments>
+
+  @if (entrenamentSeleccionat) {
+    <section>
+      <h2>Detalls de l'entrenament</h2>
+
+      <h3>{{ entrenamentSeleccionat.nom }}</h3>
+
+      <p>{{ entrenamentSeleccionat.descripcio }}</p>
+    </section>
+  }
+
+  <aside class="note">Nota: aquest projecte s'ampliarà durant el mòdul.</aside>
 
   <p>Projecte base llest</p>
-
 </main>
 
 <router-outlet />
