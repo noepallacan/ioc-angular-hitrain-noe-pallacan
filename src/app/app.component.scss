@@ -8,6 +8,25 @@
   color: #2c384d;
 }
 
+.salt-contingut {
+  position: absolute;
+  left: -9999px;
+  padding: 10px;
+  background-color: white;
+  color: #1976d2;
+  z-index: 10;
+}
+
+.salt-contingut:focus {
+  left: 10px;
+  top: 10px;
+  outline: 2px solid #1976d2;
+}
+
+.contenidor:focus {
+  outline: none;
+}
+
 h1 {
   color: #1976d2;
 }
@@ -70,6 +89,10 @@ h2{
     margin: 16px;
     gap: 12px;
     font-size: 14px;
+  }
+
+  .layout-entrenaments {
+    grid-template-columns: 1fr;
   }
 
   h1 {

@@ -1,48 +1,55 @@
-<main class="app-shell">
-  <section class="intro">
+<a href="#contingut-principal" class="salt-contingut"> Salta al contingut principal </a>
+
+<div class="app-shell">
+  <header class="intro">
     <h1>{{ nomApp }}</h1>
-
     <p>Noé Pallacan — Aplicació per registrar i consultar l'històric d'entrenaments.</p>
-  </section>
+  </header>
 
-  <section class="project-card">
-    <h2>Dades del projecte</h2>
-    <p>Framework: Angular 22</p>
-    <p>Estils: SCSS</p>
-    <p>Arquitectura: Standalone</p>
-    <p>Estat: Projecte base llest</p>
-  </section>
-
-  <app-filtres-entrenaments (filtresAplicats)="aplicarFiltres($event)"> </app-filtres-entrenaments>
-
-  <h2>Els meus entrenaments</h2>
-
-  <p>Resultats: {{ entrenamentsFiltrats.length }}</p>
-
-  <app-llista-entrenaments
-    [entrenaments]="entrenamentsFiltrats"
-    (entrenamentSeleccionat)="mostrarDetall($event)"
-  >
-  </app-llista-entrenaments>
-
-  @if (entrenamentSeleccionat) {
-    <section class="detall-entrenament">
-      <h2>Detalls de l'entrenament</h2>
-
-      <div class="detall-capcalera">
-        <h3>{{ entrenamentSeleccionat.nom }}</h3>
-        <span> Data: {{ entrenamentSeleccionat.data | date: 'dd/MM/yyyy' }} </span>
-      </div>
-
-      <p>{{ entrenamentSeleccionat.descripcio }}</p>
+  <main class="contenidor" id="contingut-principal" tabindex="-1">
+    <section class="project-card">
+      <h2>Dades del projecte</h2>
+      <p>Framework: Angular 22</p>
+      <p>Estils: SCSS</p>
+      <p>Arquitectura: Standalone</p>
+      <p>Estat: Projecte base llest</p>
     </section>
-  } @else {
-    <section class="detall-entrenament">
-      <p>Seleccioneu un entrenament per veure'n els detalls.</p>
-    </section>
-  }
 
-  <aside class="note">Nota: aquest projecte s'ampliarà durant el mòdul.</aside>
-</main>
+    <div class="layout-entrenaments">
+      <app-filtres-entrenaments (filtresAplicats)="aplicarFiltres($event)">
+      </app-filtres-entrenaments>
 
+      <section class="resultats">
+        <h2>Els meus entrenaments</h2>
+
+        <p role="status">Resultats: {{ entrenamentsFiltrats.length }}</p>
+
+        <app-llista-entrenaments
+          [entrenaments]="entrenamentsFiltrats"
+          (entrenamentSeleccionat)="mostrarDetall($event)"
+        >
+        </app-llista-entrenaments>
+      </section>
+    </div>
+
+    @if (entrenamentSeleccionat) {
+      <section class="detall-entrenament">
+        <h2>Detalls de l'entrenament</h2>
+
+        <div class="detall-capcalera">
+          <h3>{{ entrenamentSeleccionat.nom }}</h3>
+          <span> Data: {{ entrenamentSeleccionat.data | date: 'dd/MM/yyyy' }} </span>
+        </div>
+
+        <p>{{ entrenamentSeleccionat.descripcio }}</p>
+      </section>
+    } @else {
+      <section class="detall-entrenament">
+        <p>Seleccioneu un entrenament per veure'n els detalls.</p>
+      </section>
+    }
+
+    <aside class="note">Nota: aquest projecte s'ampliarà durant el mòdul.</aside>
+  </main>
+</div>
 <router-outlet />
