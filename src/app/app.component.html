@@ -17,6 +17,8 @@
 
   <h2>Els meus entrenaments</h2>
 
+  <p>Resultats: {{ entrenamentsFiltrats.length }}</p>
+
   <app-llista-entrenaments
     [entrenaments]="entrenamentsFiltrats"
     (entrenamentSeleccionat)="mostrarDetall($event)"
@@ -24,12 +26,19 @@
   </app-llista-entrenaments>
 
   @if (entrenamentSeleccionat) {
-    <section>
+    <section class="detall-entrenament">
       <h2>Detalls de l'entrenament</h2>
 
-      <h3>{{ entrenamentSeleccionat.nom }}</h3>
+      <div class="detall-capcalera">
+        <h3>{{ entrenamentSeleccionat.nom }}</h3>
+        <span> Data: {{ entrenamentSeleccionat.data | date: 'dd/MM/yyyy' }} </span>
+      </div>
 
       <p>{{ entrenamentSeleccionat.descripcio }}</p>
+    </section>
+  } @else {
+    <section class="detall-entrenament">
+      <p>Seleccioneu un entrenament per veure'n els detalls.</p>
     </section>
   }
 

@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { DatePipe } from '@angular/common';
 import { LlistaEntrenamentsComponent } from './components/llista-entrenaments/llista-entrenaments.component';
 import { FiltresEntrenamentsComponent } from './components/filtres-entrenaments/filtres-entrenaments.component';
 import { ENTRENAMENTS_MOCK } from './mocks/dades-mock';
@@ -7,7 +8,7 @@ import type { Entrenament } from './models/entrenament.model';
 import type { FiltresEntrenament } from './components/filtres-entrenaments/filtres-entrenaments.component';
 
 @Component({
-  imports: [RouterOutlet, LlistaEntrenamentsComponent, FiltresEntrenamentsComponent],
+  imports: [RouterOutlet, DatePipe, LlistaEntrenamentsComponent, FiltresEntrenamentsComponent],
   selector: 'app-root',
   styleUrl: './app.component.scss',
   templateUrl: './app.component.html',
