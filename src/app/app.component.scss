@@ -4,7 +4,8 @@
   gap: 1rem;
   max-width: 48rem;
   margin: 2rem auto;
-  font-family: system-ui, sans-serif;
+  font-family: Montserrat, system-ui, sans-serif;
+  color: #2c384d;
 }
 
 h1 {
@@ -15,11 +16,14 @@ h1 {
   padding: 1rem;
   background-color: #d6dce2;
   border: 1px solid #b7c7d9;
-  border-radius: 0.5rem;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 25px 0;
 }
 
 .note {
   padding: 1rem;
+  margin: 1rem 0 ;
   background: #b7c7d9;
   border-left: 4px solid #1976d2;
 }

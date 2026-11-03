@@ -1,15 +1,56 @@
 <section class="filtres">
-  <h2>Filtres d'entrenaments</h2>
+  <h2>Filtrar entrenaments</h2>
 
-  <label for="cerca">Cercar entrenament:</label>
-  <input type="text" id="cerca" placeholder="Nom de l'entrenament" disabled />
+  <form #formulari="ngForm" (ngSubmit)="aplicar()">
+    <!-- Camp de cerca -->
+    <div class="camp">
+      <label for="cerca">Cercar entrenament:</label>
 
-  <label for="categoria">Categoria:</label>
-  <select id="categoria" disabled>
-    <option>Totes les categories</option>
-    <option>Boxa</option>
-    <option>Running</option>
-    <option>Hibrid</option>
-    <option>Força</option>
-  </select>
+      <input
+        type="search"
+        id="cerca"
+        name="cerca"
+        [(ngModel)]="filtres.text"
+        #campText="ngModel"
+        minlength="3"
+        placeholder="Ex.: tècnica, força, sèries..."
+        aria-describedby="ajuda-cerca"
+      />
+
+      <span id="ajuda-cerca"
+        >Opcional: si escriviu text, ha de tenir 3 caràcters com a mínim. Podeu filtrar només per
+        categoria.
+      </span>
+
+      @if (campText.errors?.['minlength'] && (campText.dirty || campText.touched)) {
+        <p class="error" role="alert">La cerca ha de tenir almenys 3 caràcters.</p>
+      }
+    </div>
+
+    <!-- Selector de categoria -->
+    <div class="camp">
+      <label for="categoria">Categoria:</label>
+
+      <select
+        id="categoria"
+        name="categoria"
+        [(ngModel)]="filtres.categoria"
+        #campCategoria="ngModel"
+        required
+      >
+        <option value="Totes">Totes les categories</option>
+        <option value="Boxa">Boxa</option>
+        <option value="Running">Running</option>
+        <option value="Hibrid">Hibrid</option>
+        <option value="Força">Força</option>
+      </select>
+    </div>
+
+    <!-- Botons -->
+    <div class="accions">
+      <button type="submit" [disabled]="formulari.invalid">Aplicar filtres</button>
+
+      <button type="button" (click)="restablir()">Restablir</button>
+    </div>
+  </form>
 </section>

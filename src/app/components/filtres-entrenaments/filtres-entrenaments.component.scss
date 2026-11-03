@@ -1,3 +1,79 @@
-label{
-    margin: 6px 10px;
+.filtres {
+  background-color: #d6dce2;
+  border: 1px solid #b7c7d9;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 25px 0;
+
+  form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .camp {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    label {
+      font-weight: 600;
+    }
+
+    input,
+    select {
+      padding: 8px;
+      border: 1px solid #b8c5d3;
+      border-radius: 5px;
+      font: inherit;
+      background-color: white;
+    }
+
+    input:focus,
+    select:focus {
+      outline: 2px solid #4a90e2;
+    }
+
+    span {
+      font-size: 12px;
+      color: #64748b;
+    }
+  }
+
+  .error {
+    color: red;
+    font-size: 13px;
+    margin: 0;
+  }
+
+  .accions {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 10px;
+
+    button {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #2563eb;
+      color: white;
+      cursor: pointer;
+    }
+
+    button[type="button"] {
+      background-color: #64748b;
+    }
+
+    button:disabled {
+      background-color: #b8c5d3;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Adaptació a mòbils
+@media (max-width: 600px) {
+  .filtres form {
+    grid-template-columns: 1fr;
+  }
 }
