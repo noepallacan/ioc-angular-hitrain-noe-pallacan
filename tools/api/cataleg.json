@@ -1,0 +1,94 @@
+{
+  "entrenaments": [
+    {
+      "id": "ent-001",
+      "nom": "Tècnica al sac",
+      "descripcio": "Combinacions prioritzant el jab i els desplaçaments laterals.",
+      "categoria": "Boxa",
+      "data": "2026-10-25",
+      "duradaMinuts": 60,
+      "destacat": true
+    },
+    {
+      "id": "ent-002",
+      "nom": "Easy Run",
+      "descripcio": "Ritme constant i moderat per millorar la resistència cardiovascular.",
+      "categoria": "Running",
+      "data": "2026-10-26",
+      "duradaMinuts": 50,
+      "destacat": false
+    },
+    {
+      "id": "ent-003",
+      "nom": "Entrenament funcional",
+      "descripcio": "Circuit de força i HIIT a la AirBike.",
+      "categoria": "Hibrid",
+      "data": "2026-10-27",
+      "duradaMinuts": 75,
+      "destacat": false
+    },
+    {
+      "id": "ent-004",
+      "nom": "Escola de combat",
+      "descripcio": "Treball de tècnica i escola de combat en parelles.",
+      "categoria": "Boxa",
+      "data": "2026-10-28",
+      "duradaMinuts": 60,
+      "destacat": false
+    },
+    {
+      "id": "ent-005",
+      "nom": "Entrenament de força (Push)",
+      "descripcio": "Entrenament de força focalitzat en la part superior del cos, especialment el pit, espatlles i tríceps.",
+      "categoria": "Força",
+      "data": "2026-10-29",
+      "duradaMinuts": 90,
+      "destacat": true
+    },
+    {
+      "id": "ent-006",
+      "nom": "Sèries de 400 m",
+      "descripcio": "8 sèries de 400 metres a ritme alt amb 90 segons de recuperació.",
+      "categoria": "Running",
+      "data": "2026-10-30",
+      "duradaMinuts": 30,
+      "destacat": true
+    },
+    {
+      "id": "ent-007",
+      "nom": "Tecnica de boxa avançada",
+      "descripcio": "Combinacions ofensives, contraatacs i treball de precisió amb el coach.",
+      "categoria": "Boxa",
+      "data": "2026-11-2",
+      "duradaMinuts": 60,
+      "destacat": true
+    },
+    {
+      "id": "ent-008",
+      "nom": "Entrenament de força (Pull)",
+      "descripcio": "Treball de traccions i biceps.",
+      "categoria": "Força",
+      "data": "2026-11-3",
+      "duradaMinuts": 75,
+      "destacat": false
+    },
+    {
+      "id": "ent-009",
+      "nom": "Simulació HYROX",
+      "descripcio": "Circuit combinant carrera, exercicis funcionals i treball de resistència muscular.",
+      "categoria": "Hibrid",
+      "data": "2026-10-20",
+      "duradaMinuts": 90,
+      "destacat": true
+    },
+    {
+      "id": "ent-010",
+      "nom": "Entrenament de força (Legs)",
+      "descripcio": "Treball de tren inferior amb contrast francès i exercicis pliomètrics.",
+      "categoria": "Força",
+      "data": "2026-10-19",
+      "duradaMinuts": 80,
+      "destacat": false
+    }
+  ]
+}

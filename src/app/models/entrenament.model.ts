@@ -9,3 +9,5 @@ export interface Entrenament {
   duradaMinuts: number;
   destacat?: boolean;
 }
+
+

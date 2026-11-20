@@ -66,10 +66,10 @@ Implementació de components standalone, comunicació entre components, formular
 
 Components creats:
 
-- LlistaEntrenamentsComponent: mostra el llistat d'entrenaments.
-- TargetaEntrenamentComponent: mostra les dades de cada entrenament.
-- EtiquetaEntrenamentComponent: identifica la categoria de l'entrenament.
-- FiltresEntrenamentsComponent: permet filtrar els entrenaments per nom i categoria.
+- `LlistaEntrenamentsComponent`: mostra el llistat d'entrenaments.
+- `TargetaEntrenamentComponent`: mostra les dades de cada entrenament.
+- `EtiquetaEntrenamentComponent`: identifica la categoria de l'entrenament.
+- `FiltresEntrenamentsComponent`: permet filtrar els entrenaments per nom i categoria.
 
 Funcionalitats
 

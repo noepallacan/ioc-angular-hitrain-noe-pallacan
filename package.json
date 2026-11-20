@@ -2,6 +2,7 @@
   "name": "ioc-angular-hitrain-noe-pallacan",
   "version": "0.0.0",
   "scripts": {
+    "api": "json-server tools/api/cataleg.json --port 4301",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -25,6 +26,7 @@
     "@angular/cli": "^22.2.0",
     "@angular/compiler-cli": "^22.2.0",
     "jsdom": "^30.0.0",
+    "json-server": "^1.0.0-beta.15",
     "prettier": "^3.8.1",
     "typescript": "~6.0.2",
     "vitest": "^5.0.0"

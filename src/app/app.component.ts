@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { EntrenamentsService } from './services/entrenaments.service';
 import { RouterOutlet } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { LlistaEntrenamentsComponent } from './components/llista-entrenaments/llista-entrenaments.component';
@@ -41,5 +42,14 @@ export class App {
 
   mostrarDetall(entrenament: Entrenament): void {
     this.entrenamentSeleccionat = entrenament;
+  }
+
+  private readonly entrenamentsService = inject(EntrenamentsService);
+
+  ngOnInit(): void {
+    this.entrenamentsService.obtenirEntrenaments().subscribe({
+      next: (entrenaments) => console.log('Entrenaments de l’API:', entrenaments),
+      error: (error) => console.error('Error en consultar l’API:', error),
+    });
   }
 }
