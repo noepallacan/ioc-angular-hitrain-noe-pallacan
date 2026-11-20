@@ -15,10 +15,10 @@
       <p>Estat: Projecte base llest</p>
     </section>
 
-    <div class="layout-entrenaments">
-      <app-filtres-entrenaments (filtresAplicats)="aplicarFiltres($event)">
-      </app-filtres-entrenaments>
+    <app-filtres-entrenaments (filtresAplicats)="aplicarFiltres($event)">
+    </app-filtres-entrenaments>
 
+    <div class="layout-entrenaments">
       <section class="resultats">
         <h2>Els meus entrenaments</h2>
 
@@ -30,24 +30,24 @@
         >
         </app-llista-entrenaments>
       </section>
+
+      @if (entrenamentSeleccionat) {
+        <section class="detall-entrenament">
+          <h2>Detalls de l'entrenament</h2>
+
+          <div class="detall-capcalera">
+            <h3>{{ entrenamentSeleccionat.nom }}</h3>
+            <span> Data: {{ entrenamentSeleccionat.data | date: 'dd/MM/yyyy' }} </span>
+          </div>
+
+          <p>{{ entrenamentSeleccionat.descripcio }}</p>
+        </section>
+      } @else {
+        <section class="detall-entrenament">
+          <p>Seleccioneu un entrenament per veure'n els detalls.</p>
+        </section>
+      }
     </div>
-
-    @if (entrenamentSeleccionat) {
-      <section class="detall-entrenament">
-        <h2>Detalls de l'entrenament</h2>
-
-        <div class="detall-capcalera">
-          <h3>{{ entrenamentSeleccionat.nom }}</h3>
-          <span> Data: {{ entrenamentSeleccionat.data | date: 'dd/MM/yyyy' }} </span>
-        </div>
-
-        <p>{{ entrenamentSeleccionat.descripcio }}</p>
-      </section>
-    } @else {
-      <section class="detall-entrenament">
-        <p>Seleccioneu un entrenament per veure'n els detalls.</p>
-      </section>
-    }
 
     <aside class="note">Nota: aquest projecte s'ampliarà durant el mòdul.</aside>
   </main>

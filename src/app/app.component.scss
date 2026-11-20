@@ -54,6 +54,13 @@ h2{
   margin-bottom: 0px;
 }
 
+.layout-entrenaments {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: start;
+}
+
 .detall-capcalera {
   display: flex;
   align-items: center;
@@ -92,7 +99,8 @@ h2{
   }
 
   .layout-entrenaments {
-    grid-template-columns: 1fr;
+      display: grid;
+      grid-template-columns: 1fr;
   }
 
   h1 {
