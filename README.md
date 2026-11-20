@@ -10,9 +10,16 @@ HiTrain és una aplicació pensada per registrar i consultar l'històric d'entre
 
 ## Versions utilitzades
 
-- Angular: 22.2.0
-- Node.js: v24.15.0
-- npm: 11.12.1
+- `Angular`: 22.2.0
+- `Node.js`: v24.15.0
+- `npm`: 11.12.1
+
+## Branques del repositori
+
+- `main`: branca principal del repositori.
+- `ra1-setup`: projecte base creat a l'EAC1.
+- `ra2-components`: branca de treball de l'EAC2, amb els components, el formulari de
+  filtres, el control de flux i les millores d'accessibilitat i responsive.
 
 ## Comandes per el projecte
 
@@ -73,7 +80,8 @@ Funcionalitats
 - Missatge quan no hi ha resultats.
 - Panell de detalls de l'entrenament seleccionat.
 - Format de dates amb el pipe date.
-- Disseny responsive.
+- Layout dividit (llista i detall) amb CSS Grid, que passa a una sola columna
+  per sota dels 600 px d'amplada(versió mòbil).
 - Millores d'accessibilitat i navegació amb teclat.
 
 ## Enllaç del repositori
