@@ -1,10 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, type OnInit } from '@angular/core';
 import { EntrenamentsService } from './services/entrenaments.service';
 import { RouterOutlet } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { LlistaEntrenamentsComponent } from './components/llista-entrenaments/llista-entrenaments.component';
 import { FiltresEntrenamentsComponent } from './components/filtres-entrenaments/filtres-entrenaments.component';
-import { ENTRENAMENTS_MOCK } from './mocks/dades-mock';
 import type { Entrenament } from './models/entrenament.model';
 import type { FiltresEntrenament } from './components/filtres-entrenaments/filtres-entrenaments.component';
 
@@ -14,42 +13,48 @@ import type { FiltresEntrenament } from './components/filtres-entrenaments/filtr
   styleUrl: './app.component.scss',
   templateUrl: './app.component.html',
 })
-export class App {
+export class App implements OnInit {
   protected readonly title = signal('ioc-angular-hitrain-noe-pallacan');
-
   public nomApp = 'HiTrain';
 
-  entrenaments = ENTRENAMENTS_MOCK;
+  private readonly entrenamentsService = inject(EntrenamentsService);
+  private entrenaments: Entrenament[] = [];
+  private filtresActuals: FiltresEntrenament = { text: '', categoria: 'Totes' };
 
-  entrenamentsFiltrats: Entrenament[] = this.entrenaments;
+  // Llista que llegeix la pantalla
+  readonly entrenamentsFiltrats = signal<Entrenament[]>([]);
+  entrenamentSeleccionat: Entrenament | null = null;
 
+  // Carrega els entrenaments quan s'obre HiTrain
+  ngOnInit(): void {
+    this.entrenamentsService.obtenirEntrenaments().subscribe({
+      next: (entrenaments) => {
+        this.entrenaments = entrenaments;
+        this.aplicarFiltres(this.filtresActuals);
+      },
+      error: (error) => console.error('Error en carregar els entrenaments:', error),
+    });
+  }
+
+  // Aplica els filtres al llistat carregat
   aplicarFiltres(filtres: FiltresEntrenament): void {
+    this.filtresActuals = filtres;
     const cerca = filtres.text.toLowerCase();
 
-    this.entrenamentsFiltrats = this.entrenaments.filter((entrenament) => {
+    const resultats = this.entrenaments.filter((entrenament) => {
       const coincideixText = entrenament.nom.toLowerCase().includes(cerca);
-
       const coincideixCategoria =
         filtres.categoria === 'Totes' || entrenament.categoria === filtres.categoria;
 
       return coincideixText && coincideixCategoria;
     });
 
+    this.entrenamentsFiltrats.set(resultats);
     this.entrenamentSeleccionat = null;
   }
 
-  entrenamentSeleccionat: Entrenament | null = null;
-
+  // Mostra el detall de la targeta seleccionada.
   mostrarDetall(entrenament: Entrenament): void {
     this.entrenamentSeleccionat = entrenament;
-  }
-
-  private readonly entrenamentsService = inject(EntrenamentsService);
-
-  ngOnInit(): void {
-    this.entrenamentsService.obtenirEntrenaments().subscribe({
-      next: (entrenaments) => console.log('Entrenaments de l’API:', entrenaments),
-      error: (error) => console.error('Error en consultar l’API:', error),
-    });
   }
 }

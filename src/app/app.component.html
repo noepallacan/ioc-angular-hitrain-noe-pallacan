@@ -22,10 +22,10 @@
       <section class="resultats">
         <h2>Els meus entrenaments</h2>
 
-        <p role="status">Resultats: {{ entrenamentsFiltrats.length }}</p>
+        <p role="status">Resultats: {{ entrenamentsFiltrats().length }}</p>
 
         <app-llista-entrenaments
-          [entrenaments]="entrenamentsFiltrats"
+          [entrenaments]="entrenamentsFiltrats()"
           (entrenamentSeleccionat)="mostrarDetall($event)"
         >
         </app-llista-entrenaments>
