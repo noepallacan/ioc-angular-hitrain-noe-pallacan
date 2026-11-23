@@ -1,12 +1,6 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import type { CategoriaEntrenament } from '../../models/entrenament.model';
-
-// Interficie de les categories del formulari
-export interface FiltresEntrenament {
-  text: string;
-  categoria: CategoriaEntrenament | 'Totes';
-}
+import type { FiltresEntrenament } from '../../models/entrenament.model';
 @Component({
   imports: [FormsModule],
   selector: 'app-filtres-entrenaments',

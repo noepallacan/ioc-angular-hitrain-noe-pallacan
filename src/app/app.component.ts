@@ -4,11 +4,17 @@ import { RouterOutlet } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { LlistaEntrenamentsComponent } from './components/llista-entrenaments/llista-entrenaments.component';
 import { FiltresEntrenamentsComponent } from './components/filtres-entrenaments/filtres-entrenaments.component';
-import type { Entrenament } from './models/entrenament.model';
-import type { FiltresEntrenament } from './components/filtres-entrenaments/filtres-entrenaments.component';
+import type { Entrenament, FiltresEntrenament, NouEntrenament } from './models/entrenament.model';
+import { FormulariNouEntrenamentComponent } from './components/formulari-nou-entrenament/formulari-nou-entrenament.component';
 
 @Component({
-  imports: [RouterOutlet, DatePipe, LlistaEntrenamentsComponent, FiltresEntrenamentsComponent],
+  imports: [
+    RouterOutlet,
+    DatePipe,
+    LlistaEntrenamentsComponent,
+    FiltresEntrenamentsComponent,
+    FormulariNouEntrenamentComponent,
+  ],
   selector: 'app-root',
   styleUrl: './app.component.scss',
   templateUrl: './app.component.html',
@@ -18,42 +24,20 @@ export class App implements OnInit {
   public nomApp = 'HiTrain';
 
   private readonly entrenamentsService = inject(EntrenamentsService);
-  private entrenaments: Entrenament[] = [];
-  private filtresActuals: FiltresEntrenament = { text: '', categoria: 'Totes' };
-
-  // Llista que llegeix la pantalla
-  readonly entrenamentsFiltrats = signal<Entrenament[]>([]);
   entrenamentSeleccionat: Entrenament | null = null;
 
-  // Carrega els entrenaments quan s'obre HiTrain
+  // Demana la primera càrrega
   ngOnInit(): void {
-    this.entrenamentsService.obtenirEntrenaments().subscribe({
-      next: (entrenaments) => {
-        this.entrenaments = entrenaments;
-        this.aplicarFiltres(this.filtresActuals);
-      },
-      error: (error) => console.error('Error en carregar els entrenaments:', error),
-    });
+    this.entrenamentsService.carregarTot();
   }
 
-  // Aplica els filtres al llistat carregat
+  // Envia els filtres del formulari al servei
   aplicarFiltres(filtres: FiltresEntrenament): void {
-    this.filtresActuals = filtres;
-    const cerca = filtres.text.toLowerCase();
-
-    const resultats = this.entrenaments.filter((entrenament) => {
-      const coincideixText = entrenament.nom.toLowerCase().includes(cerca);
-      const coincideixCategoria =
-        filtres.categoria === 'Totes' || entrenament.categoria === filtres.categoria;
-
-      return coincideixText && coincideixCategoria;
-    });
-
-    this.entrenamentsFiltrats.set(resultats);
     this.entrenamentSeleccionat = null;
+    this.entrenamentsService.cercar(filtres);
   }
 
-  // Mostra el detall de la targeta seleccionada.
+  // Mostra el detall de l'entrenament clicat
   mostrarDetall(entrenament: Entrenament): void {
     this.entrenamentSeleccionat = entrenament;
   }

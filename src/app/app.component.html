@@ -18,37 +18,54 @@
     <app-filtres-entrenaments (filtresAplicats)="aplicarFiltres($event)">
     </app-filtres-entrenaments>
 
-    <div class="layout-entrenaments">
-      <section class="resultats">
-        <h2>Els meus entrenaments</h2>
+    <!-- Mostra un bloc segons l'estat del servei -->
+    @let estatActual = entrenamentsService.estat();
 
-        <p role="status">Resultats: {{ entrenamentsFiltrats().length }}</p>
-
-        <app-llista-entrenaments
-          [entrenaments]="entrenamentsFiltrats()"
-          (entrenamentSeleccionat)="mostrarDetall($event)"
-        >
-        </app-llista-entrenaments>
-      </section>
-
-      @if (entrenamentSeleccionat) {
-        <section class="detall-entrenament">
-          <h2>Detalls de l'entrenament</h2>
-
-          <div class="detall-capcalera">
-            <h3>{{ entrenamentSeleccionat.nom }}</h3>
-            <span> Data: {{ entrenamentSeleccionat.data | date: 'dd/MM/yyyy' }} </span>
-          </div>
-
-          <p>{{ entrenamentSeleccionat.descripcio }}</p>
-        </section>
-      } @else {
-        <section class="detall-entrenament">
-          <p>Seleccioneu un entrenament per veure'n els detalls.</p>
-        </section>
+    @switch (estatActual.estat) {
+      @case ('inicial') {
+        <p role="status">Preparant el llistat…</p>
       }
-    </div>
+      @case ('carregant') {
+        <p role="status">Carregant entrenaments…</p>
+      }
+      @case ('error') {
+        <div class="estat-error">
+          <p role="alert">{{ estatActual.error }}</p>
+          <button type="button" (click)="entrenamentsService.reintentar()">Reintentar</button>
+        </div>
+      }
+      @case ('exit') {
+        <div class="layout-entrenaments">
+          <section class="resultats">
+            <h2>Els meus entrenaments</h2>
+            <p role="status">Resultats: {{ estatActual.entrenaments.length }}</p>
 
+            <app-llista-entrenaments
+              [entrenaments]="estatActual.entrenaments"
+              (entrenamentSeleccionat)="mostrarDetall($event)"
+            >
+            </app-llista-entrenaments>
+          </section>
+
+          <section class="detall-entrenament" aria-labelledby="titol-detall">
+            <h2 id="titol-detall">Detalls de l'entrenament</h2>
+
+            @if (entrenamentSeleccionat) {
+              <div class="detall-capcalera">
+                <h3>{{ entrenamentSeleccionat.nom }}</h3>
+                <span>Data: {{ entrenamentSeleccionat.data | date: 'dd/MM/yyyy' }}</span>
+              </div>
+
+              <p>{{ entrenamentSeleccionat.descripcio }}</p>
+            } @else {
+              <p>Seleccioneu un entrenament per veure'n els detalls.</p>
+            }
+          </section>
+        </div>
+      }
+    }
+    <!-- Mostra el formulari després dels estats del llistat -->
+    <app-formulari-nou-entrenament />
     <aside class="note">Nota: aquest projecte s'ampliarà durant el mòdul.</aside>
   </main>
 </div>

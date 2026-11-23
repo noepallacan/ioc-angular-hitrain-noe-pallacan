@@ -1,0 +1,53 @@
+// Separa el formulari d'alta de la resta del llistat
+.formulari-alta {
+  display: grid;
+  background-color: #d6dce2;
+  border: 1px solid #b7c7d9;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 25px 0;
+
+  .camp {
+    display: grid;
+    gap: 0.25rem;
+    margin: 8px 0;
+  }
+
+  label {
+    font-weight: 600;
+  }
+
+  input,
+  select {
+    padding: 8px;
+    border: 1px solid #b8c5d3;
+    border-radius: 5px;
+    font: inherit;
+    background-color: white;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  button {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #2563eb;
+    color: white;
+    cursor: pointer;
+    margin: 12px 0 0 0;
+  }
+  button[type="button"] {
+    background-color: #64748b;
+  }
+  button:disabled {
+    background-color: #b8c5d3;
+    cursor: not-allowed;
+  }
+
+  button {
+    justify-self: start;
+  }
+}

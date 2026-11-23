@@ -20,3 +20,25 @@ export interface EntrenamentApiResponse {
   duradaMinuts: number;
   destacat: boolean;
 }
+
+// Fases per les quals pot passar la consulta
+export type EstatServei = 'inicial' | 'carregant' | 'exit' | 'error';
+
+// Informació que el servei comparteix amb la vista
+export interface EstatEntrenaments {
+  estat: EstatServei;
+  entrenaments: Entrenament[];
+  error?: string;
+}
+
+// Criteris que comparteixen el formulari i el servei
+export interface FiltresEntrenament {
+  text: string;
+  categoria: CategoriaEntrenament | 'Totes';
+}
+
+// Camps que omple l'usuari quan crea un entrenament
+export type NouEntrenament = Pick<
+  Entrenament,
+  'nom' | 'descripcio' | 'categoria' | 'data' | 'duradaMinuts'
+>;

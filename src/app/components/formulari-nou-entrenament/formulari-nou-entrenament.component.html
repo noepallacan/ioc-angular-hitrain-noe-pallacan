@@ -1,0 +1,56 @@
+<!-- Formulari per registrar un entrenament nou -->
+<form
+  class="formulari-alta"
+  [formGroup]="formulari"
+  (ngSubmit)="crear()"
+  aria-labelledby="titol-alta"
+>
+  <h2 id="titol-alta">Afegir un entrenament</h2>
+
+  <div class="camp">
+    <label for="alta-nom">Nom</label>
+    <input id="alta-nom" type="text" formControlName="nom" />
+  </div>
+
+  <div class="camp">
+    <label for="alta-descripcio">Descripció</label>
+    <textarea id="alta-descripcio" formControlName="descripcio" rows="3"></textarea>
+  </div>
+
+  <div class="camp">
+    <label for="alta-categoria">Categoria</label>
+    <select id="alta-categoria" formControlName="categoria">
+      @for (categoria of categories; track categoria) {
+        <option [value]="categoria">{{ categoria }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="camp">
+    <label for="alta-data">Data</label>
+    <input id="alta-data" type="date" formControlName="data" />
+  </div>
+
+  <div class="camp">
+    <label for="alta-durada">Durada (minuts)</label>
+    <input id="alta-durada" type="number" min="1" formControlName="duradaMinuts" />
+  </div>
+
+  @if (formulari.invalid && formulari.touched) {
+    <p role="alert">
+      Revisa els camps: nom amb un mínim de 3 caràcters, descripció amb un mínim de 10, data
+      obligatòria i durada d'almenys 1 minut.
+    </p>
+  }
+
+  <button type="submit" [disabled]="formulari.invalid || enviant()">
+    {{ enviant() ? 'Desant…' : 'Crear entrenament' }}
+  </button>
+
+  @if (missatge()) {
+    <p role="status">{{ missatge() }}</p>
+  }
+  @if (error()) {
+    <p role="alert">{{ error() }}</p>
+  }
+</form>

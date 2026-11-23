@@ -89,6 +89,25 @@
       "data": "2026-10-19",
       "duradaMinuts": 80,
       "destacat": false
+    },
+    {
+      "nom": "Prova DEKA",
+      "descripcio": "Competició híbrida.",
+      "categoria": "Hibrid",
+      "data": "2026-11-21",
+      "duradaMinuts": 30,
+      "destacat": false,
+      "id": "OpGSxy8tMIM"
+    },
+    {
+      "nom": "Combat amateur",
+      "descripcio": "Combat de boxa amateur (3 rounds de 3')º",
+      "categoria": "Boxa",
+      "data": "2027-01-26",
+      "duradaMinuts": 40,
+      "destacat": false,
+      "id": "B6oSDqT51SM"
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }
