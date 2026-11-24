@@ -84,12 +84,32 @@ h2{
   }
 }
 
+.estat-error {
+  padding: 10px 0;
+  color: rgb(228, 74, 74);
+}
+
+.estat-error button{
+  padding: 10px 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #64748b;
+  color: white;
+  cursor: pointer;
+}
+
+.estat-error button:hover {
+  background-color: #59687c;
+  transition: background-color 0.2s ease;
+}
+
 .note {
   padding: 1rem;
   margin: 1rem 0 ;
   background: #b7c7d9;
   border-left: 4px solid #1976d2;
 }
+
 
 @media (max-width: 600px) {
   .app-shell {

@@ -18,7 +18,7 @@
     <app-filtres-entrenaments (filtresAplicats)="aplicarFiltres($event)">
     </app-filtres-entrenaments>
 
-    <!-- Mostra un bloc segons l'estat del servei -->
+    <!-- Mostra contingut segons l'estat del servei -->
     @let estatActual = entrenamentsService.estat();
 
     @switch (estatActual.estat) {

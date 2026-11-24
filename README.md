@@ -27,17 +27,6 @@ Comanda per crear el projecte:
 
 ng new ioc-angular-hitrain-noe-pallacan --routing --style=scss --ssr=false --standalone=true --file-name-style-guide=2016 --skip-git=true --package-manager=npm
 
-Creació dels components:
-
-Comandes per generar els quatre components standalone de l'EAC2:
-
-ng generate component components/llista-entrenaments
-ng generate component components/targeta-entrenament
-ng generate component components/etiqueta-entrenament
-ng generate component components/filtres-entrenaments
-
-El model Entrenament, les categories i les dades mock s'han creat manualment als fitxers corresponents.
-
 Instal·lació de dependències:
 
 npm install
@@ -53,6 +42,10 @@ ng test
 Compilació del projecte:
 
 ng build
+
+Executar API local:
+
+npm run api
 
 ## Estat del projecte
 
@@ -83,6 +76,27 @@ Funcionalitats
 - Layout dividit (llista i detall) amb CSS Grid, que passa a una sola columna
   per sota dels 600 px d'amplada(versió mòbil).
 - Millores d'accessibilitat i navegació amb teclat.
+
+### EAC3
+
+Implementació d'una API local amb `json-server`, serveis HTTP, formularis reactius i historial de cerques.
+
+Funcionalitats:
+
+- Substitució de les dades mock per dades obtingudes de l'API.
+- Consultes GET per carregar i filtrar entrenaments.
+- Peticions POST per crear entrenaments nous.
+- Adaptadors per transformar i normalitzar les dades de l'API.
+- Gestió dels estats de càrrega, èxit i error amb signals.
+- Botó Reintentar per repetir l'última consulta.
+- Formulari reactiu de cerca amb validació síncrona i asíncrona, i debounce de 400 ms.
+- Historial de cerques amb `localStorage`, recuperació i neteja de cerques.
+- Formulari reactiu d'alta d'entrenaments amb validacions.
+
+Serveis creats:
+
+- `EntrenamentsService`: gestiona les peticions HTTP, els filtres, els estats i els reintents.
+- `HistorialCerquesService`: gestiona l'historial de cerques guardat al navegador.
 
 ## Enllaç del repositori
 
