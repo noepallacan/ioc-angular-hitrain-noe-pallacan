@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Service, inject, signal } from '@angular/core';
-import { map, Subject, catchError, of, switchMap, tap } from 'rxjs';
+import { Subject, catchError, map, of, switchMap, tap, type Observable } from 'rxjs';
 
 import { environment } from '../../environments/environment';
 import {
@@ -79,6 +79,13 @@ export class EntrenamentsService {
     return this.http.post<EntrenamentApiResponse>(this.apiUrl, prepararEntrenamentApi(nou)).pipe(
       map(adaptarEntrenamentApi),
       tap(() => this.reintentar()),
+    );
+  }
+
+  // Compta els entrenaments que coincideixen amb el text
+  comptarResultats(terme: string): Observable<number> {
+    return this.obtenirEntrenaments({ text: terme, categoria: 'Totes' }).pipe(
+      map((entrenaments) => entrenaments.length),
     );
   }
 

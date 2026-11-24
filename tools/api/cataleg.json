@@ -107,6 +107,15 @@
       "duradaMinuts": 40,
       "destacat": false,
       "id": "B6oSDqT51SM"
+    },
+    {
+      "nom": "Prova POST",
+      "descripcio": "Prova per a exercici 3 (EAC3)",
+      "categoria": "Hibrid",
+      "data": "2027-11-24",
+      "duradaMinuts": 60,
+      "destacat": false,
+      "id": "B_Ix4GjPGlc"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

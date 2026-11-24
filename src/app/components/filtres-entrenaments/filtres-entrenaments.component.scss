@@ -41,6 +41,12 @@
     margin: 0;
   }
 
+  .status {
+    font-size: 13px;
+    color: #eb7b30;
+    margin: 0;
+  }
+
   .accions {
     grid-column: 1 / -1;
     display: flex;
@@ -55,8 +61,18 @@
       cursor: pointer;
     }
 
+    button:hover{
+      background-color: #2053c2;
+      transition: background-color 0.2s ease;
+    }
+
     button[type="button"] {
       background-color: #64748b;
+    }
+
+    button[type="button"]:hover {
+      background-color: #59687c;
+      transition: background-color 0.2s ease;
     }
 
     button:disabled {
@@ -64,7 +80,66 @@
       cursor: not-allowed;
     }
   }
+
+    
+  .historial {
+    margin-top: 1.5rem;
+
+    h2 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    ul {
+      padding-left: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    li button {
+      padding: 0.35rem 0.75rem;
+      border: 1px solid #8e9497;
+      border-radius: 999px;
+      background: white;
+      cursor: pointer;
+    }
+
+    .neteja {
+      padding: 0.35rem 0.75rem;
+      border: none;
+      border-radius: 999px;
+      background-color: #64748b;
+      color: white;
+      cursor: pointer;
+    }
+    .neteja:hover {
+      background-color: #565c64;
+      transition: background-color 0.2s ease;
+    }
+
+    li button:hover {
+      background-color: #e0e0e2;
+      transition: background-color 0.2s ease;
+    }
+
+
+  }
+
+  .capcalera-historial {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  button:focus-visible {
+    outline: 3px solid #0b66c3;
+    outline-offset: 2px;
+  }
 }
+
+
 
 // Adaptació a mòbils
 @media (max-width: 600px) {

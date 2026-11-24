@@ -42,3 +42,10 @@ export type NouEntrenament = Pick<
   Entrenament,
   'nom' | 'descripcio' | 'categoria' | 'data' | 'duradaMinuts'
 >;
+
+// Dades d'una cerca guardada a l'historial
+export interface CercaDesada {
+  terme: string;
+  categoria: CategoriaEntrenament | 'Totes';
+  data: string;
+}

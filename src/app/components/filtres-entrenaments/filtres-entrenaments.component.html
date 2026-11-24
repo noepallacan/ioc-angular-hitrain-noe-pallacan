@@ -1,7 +1,7 @@
 <section class="filtres">
   <h2>Filtrar entrenaments</h2>
 
-  <form #formulari="ngForm" (ngSubmit)="aplicar()">
+  <form [formGroup]="formulari" (ngSubmit)="aplicar()">
     <!-- Camp de cerca -->
     <div class="camp">
       <label for="cerca">Cercar entrenament:</label>
@@ -10,9 +10,7 @@
         type="search"
         id="cerca"
         name="cerca"
-        [(ngModel)]="filtres.text"
-        #campText="ngModel"
-        minlength="3"
+        formControlName="text"
         placeholder="Ex.: tècnica, força, sèries..."
         aria-describedby="ajuda-cerca"
       />
@@ -22,8 +20,16 @@
         categoria.
       </span>
 
-      @if (campText.errors?.['minlength'] && (campText.dirty || campText.touched)) {
+      @if (campText.pending) {
+        <p class="status" role="status">Comprovant...</p>
+      }
+
+      @if (campText.hasError('minlength') && (campText.dirty || campText.touched)) {
         <p class="error" role="alert">La cerca ha de tenir almenys 3 caràcters.</p>
+      }
+
+      @if (campText.hasError('senseResultats') && (campText.dirty || campText.touched)) {
+        <p class="error" role="alert">No hi ha entrenaments que coincideixin amb aquest text.</p>
       }
     </div>
 
@@ -31,13 +37,7 @@
     <div class="camp">
       <label for="categoria">Categoria:</label>
 
-      <select
-        id="categoria"
-        name="categoria"
-        [(ngModel)]="filtres.categoria"
-        #campCategoria="ngModel"
-        required
-      >
+      <select id="categoria" formControlName="categoria">
         <option value="Totes">Totes les categories</option>
         <option value="Boxa">Boxa</option>
         <option value="Running">Running</option>
@@ -48,9 +48,35 @@
 
     <!-- Botons d'aplicació i restabliment -->
     <div class="accions">
-      <button type="submit" [disabled]="formulari.invalid">Aplicar filtres</button>
+      <button type="submit" [disabled]="formulari.invalid || formulari.pending">
+        Aplicar filtres
+      </button>
 
       <button type="button" (click)="restablir()">Restablir</button>
     </div>
   </form>
+  <!-- Historial de cerques -->
+  <section class="historial" aria-labelledby="titol-historial">
+    <div class="capcalera-historial">
+      <h2 id="titol-historial">Cerques recents</h2>
+
+      @if (historial.historial().length > 0) {
+        <button class="neteja" type="button" (click)="historial.netejar()">Neteja</button>
+      }
+    </div>
+
+    @if (historial.historial().length > 0) {
+      <ul>
+        @for (cerca of historial.historial(); track cerca.data) {
+          <li>
+            <button type="button" (click)="recuperar(cerca)">
+              {{ cerca.terme }} · {{ cerca.categoria || 'Totes les categories' }}
+            </button>
+          </li>
+        }
+      </ul>
+    } @else {
+      <p>Encara no hi ha cerques desades.</p>
+    }
+  </section>
 </section>
